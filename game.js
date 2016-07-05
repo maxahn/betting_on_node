@@ -58,16 +58,20 @@ while (playerOne.bankroll > 0 && playerTwo.bankroll > 0) {
 //
   if (guess === answer) {
      currentPlayer.bankroll += bet;
-     var correctResponse = "You are correct! You won $" + bet + "! You now have $" + player.bankroll + ".";
+     var correctResponse = "Correct! " + currentPlayer.name + " won $" + bet + "!";  
      console.log(correctResponse.green);
   } else if (guess > (answer - 1) && guess < (answer + 1)) { 
-    var closeResponse = "The answer was " + answer +  "! You were off by just 1! You will still retain your previous balance of $" + currentPlayer.bankroll + ".";
+    var closeResponse = "The answer was " + answer +  "! " + currentPlayer.name + " was off by just 1! They will still retain your previous balance of $" + currentPlayer.bankroll + ".";
     console.log(closeResponse.yellow);  
   } else {
-    var wrongResponse = "Wrong! The answer was " + answer + "! You lost $" + bet + "! Your balance is now $" + currentPlayer.bankroll + "."; 
+    var wrongResponse = "Wrong! The answer was " + answer + "! " + currentPlayer.name + " lost $" + bet + "! Their balance is now $" + currentPlayer.bankroll + "."; 
     currentPlayer.bankroll -= bet;
     console.log(wrongResponse.red);
   }
+
+    console.log(playerOne.name + ":" + "$" + playerOne.bankroll)
+    console.log(playerTwo.name + ":" + "$" + playerOne.bankroll)
+
   if (currentPlayer.bankroll <= 0) {
     console.log("You're bankrupt!".red);
     keepPlaying = false;
