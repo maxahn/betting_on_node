@@ -1,4 +1,5 @@
 var prompt = require('prompt-sync')();
+var color = require('colors');
 var player = {
   bankroll: 100
 };
@@ -16,17 +17,20 @@ while (keepPlaying === 'yes') {
 
   if (guess === answer) {
      player.bankroll += bet;
-     console.log("You are correct! You won $" + bet + "! You now have $" + player.bankroll + ".");
+     var correctResponse = "You are correct! You won $" + bet + "! You now have $" + player.bankroll + ".";
+     console.log(correctResponse.green);
   } else if (guess > (answer - 1) && guess < (answer + 1)) { 
-    console.log("The answer was " + answer +  "! You were off by just 1! You will still retain your previous balance of $" + player.bankroll + ".");  
+    var closeResponse = "The answer was " + answer +  "! You were off by just 1! You will still retain your previous balance of $" + player.bankroll + ".";
+    console.log(closeResponse.yellow);  
   } else {
+    var wrongResponse = "Wrong! The answer was " + answer + "! You lost $" + bet + "! Your balance is now $" + player.bankroll + "."; 
     player.bankroll -= bet;
-    console.log("Wrong! The answer was " + answer + "! You lost $" + bet + "! Your balance is now $" + player.bankroll + ".");
+    console.log(wrongResponse.red);
   }
   if (player.bankroll <= 0) {
-    console.log("You're bankrupt!");
+    console.log("You're bankrupt!".red);
     keepPlaying = false;
   } else {
-  keepPlaying = prompt('Make another bet?');
+  keepPlaying = prompt('Make another bet?'.green);
   }
 }

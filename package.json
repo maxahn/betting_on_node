@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/maxahn/betting_on_node#readme",
   "dependencies": {
+    "colors": "^1.1.2",
     "prompt-sync": "^4.1.4"
   }
 }
